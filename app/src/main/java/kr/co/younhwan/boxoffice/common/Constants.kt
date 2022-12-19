@@ -6,4 +6,6 @@ object Constants {
     const val BASE_URL = "https://imdb-api.com/"
 
     const val API_KEY = BuildConfig.API_KEY
+
+    const val PARAM_MOVIE_ID = "movieId"
 }

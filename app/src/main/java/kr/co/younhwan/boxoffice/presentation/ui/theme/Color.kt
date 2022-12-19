@@ -1,4 +1,4 @@
-package kr.co.younhwan.boxoffice.ui.theme
+package kr.co.younhwan.boxoffice.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

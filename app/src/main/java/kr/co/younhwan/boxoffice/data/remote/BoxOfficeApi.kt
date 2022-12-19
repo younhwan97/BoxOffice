@@ -1,8 +1,11 @@
 package kr.co.younhwan.boxoffice.data.remote
 
+import kr.co.younhwan.boxoffice.data.remote.dto.MovieDto
+import retrofit2.http.GET
+import retrofit2.http.Path
+
 interface BoxOfficeApi {
 
-
+    @GET("/en/API/BoxOffice/{apiKey}")
+    suspend fun getBoxOffice(@Path("apiKey") apiKey: String): List<MovieDto>
 }
-
-// http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=97f73904a4cb56ba0ef21b162d65781d&targetDt=20221220

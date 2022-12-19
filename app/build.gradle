@@ -5,6 +5,10 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 
+// local.properties 사용을 위함
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'kr.co.younhwan.boxoffice'
     compileSdk 32
@@ -20,6 +24,9 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        // api key 변수 지정
+        buildConfigField "String", "API_KEY", properties['api.key']
     }
 
     buildTypes {

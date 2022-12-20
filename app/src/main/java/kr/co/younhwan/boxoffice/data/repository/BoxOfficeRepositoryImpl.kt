@@ -11,7 +11,7 @@ class BoxOfficeRepositoryImpl @Inject constructor(
 ) : BoxOfficeRepository {
 
     override suspend fun getBoxOffice(apiKey: String): List<MovieDto> {
-        return api.getBoxOffice(apiKey)
+        return api.getBoxOffice(apiKey = apiKey).items
     }
 
     override suspend fun getBoxOfficeDetail(apiKey: String, movieId: String): MovieDetailDto {

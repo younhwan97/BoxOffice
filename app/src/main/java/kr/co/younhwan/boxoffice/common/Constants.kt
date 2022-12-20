@@ -3,7 +3,7 @@ package kr.co.younhwan.boxoffice.common
 import kr.co.younhwan.boxoffice.BuildConfig
 
 object Constants {
-    const val BASE_URL = "https://imdb-api.com/"
+    const val BASE_URL = "https://imdb-api.com/en/API/"
 
     const val API_KEY = BuildConfig.API_KEY
 

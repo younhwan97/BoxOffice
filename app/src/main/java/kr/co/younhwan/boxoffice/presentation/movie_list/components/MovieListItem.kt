@@ -2,6 +2,7 @@ package kr.co.younhwan.boxoffice.presentation.movie_list.components
 
 import android.widget.ImageView
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -27,10 +28,11 @@ import kotlin.math.absoluteValue
 fun MovieListItem(
     movie: Movie,
     pageOffset: Float,
-    onItemClick: () -> Unit
+    onItemClick: (Movie) -> Unit
 ) {
     Card(
         modifier = Modifier
+            .clickable { onItemClick(movie) }
             .fillMaxSize()
             .graphicsLayer {
                 // Image Scale

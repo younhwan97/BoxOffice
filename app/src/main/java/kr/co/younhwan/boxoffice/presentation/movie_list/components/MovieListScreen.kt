@@ -8,16 +8,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.calculateCurrentOffsetForPage
 import com.google.accompanist.pager.rememberPagerState
+import kr.co.younhwan.boxoffice.presentation.Screen
 import kr.co.younhwan.boxoffice.presentation.movie_list.MovieListViewModel
 import kotlin.math.absoluteValue
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun MovieListScreen(
+    navController: NavController,
     viewModel: MovieListViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
@@ -54,7 +57,7 @@ fun MovieListScreen(
                 MovieListItem(
                     movie = movies[index],
                     pageOffset = calculateCurrentOffsetForPage(index).absoluteValue,
-                    onItemClick = {}
+                    onItemClick = { navController.navigate(Screen.MovieDetailScreen.route + "/${movies[index].id}")}
                 )
             }
         }

@@ -3,6 +3,7 @@
     <color name="primary">#08ff04</color>
     <color name="dark_gray">#202020</color>
     <color name="medium_gray">#505050</color>
+    <color name="background">#2B292B</color>
     <color name="text_white">#eeeeee</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

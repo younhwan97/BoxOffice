@@ -92,12 +92,12 @@ fun MovieDetailPoster(
                 .background(
                     brush = Brush.verticalGradient(
                         colors = listOf(
-                            Color.DarkGray.copy(alpha = 0.0f),
-                            Color.DarkGray.copy(alpha = 0.0f),
-                            Color.DarkGray.copy(alpha = 0.0f),
-                            Color.DarkGray.copy(alpha = 0.0f),
-                            Color.DarkGray.copy(alpha = 0.0f),
-                            Color.DarkGray.copy(alpha = 1.0f)
+                            MaterialTheme.colors.background.copy(alpha = 0.0f),
+                            MaterialTheme.colors.background.copy(alpha = 0.0f),
+                            MaterialTheme.colors.background.copy(alpha = 0.0f),
+                            MaterialTheme.colors.background.copy(alpha = 0.0f),
+                            MaterialTheme.colors.background.copy(alpha = 0.0f),
+                            MaterialTheme.colors.background.copy(alpha = 1.0f)
                         ),
                     )
                 ),

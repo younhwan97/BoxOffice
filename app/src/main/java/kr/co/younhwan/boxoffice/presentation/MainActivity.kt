@@ -10,6 +10,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
 import kr.co.younhwan.boxoffice.presentation.movie_list.components.MovieListScreen
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             BoxOfficeTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+                Surface(modifier = Modifier.fillMaxSize(), color = Color.DarkGray) {
                     MovieListScreen()
                 }
             }

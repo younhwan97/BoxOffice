@@ -39,19 +39,7 @@ fun MovieListScreen(
     val state = viewModel.state.value
 
     val pagerState = rememberPagerState()
-
-    // Auto Scroll
-//    LaunchedEffect(Unit) {
-//        while (true) {
-//            yield()
-//            delay(10000)
-//            tween<Float>(600)
-//            pagerState.animateScrollToPage(
-//                page = (pagerState.currentPage + 1) % (pagerState.pageCount)
-//            )
-//        }
-//    }
-
+    
     if (!state.isLoading) {
         val movies = state.movies
 

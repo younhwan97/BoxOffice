@@ -19,7 +19,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.flowlayout.FlowRow
 import com.skydoves.landscapist.ImageOptions
+import com.skydoves.landscapist.animation.circular.CircularRevealPlugin
 import com.skydoves.landscapist.coil.CoilImage
+import com.skydoves.landscapist.components.rememberImageComponent
 import kr.co.younhwan.boxoffice.domain.model.MovieDetail
 import kr.co.younhwan.boxoffice.presentation.movie_detail.components.GenreTag
 
@@ -35,7 +37,6 @@ fun MovieDetailScreen(
             .verticalScroll(rememberScrollState())
     ) {
         state.movie?.let { movieDetail ->
-
             MovieDetailPoster(movieDetail)
 
             MovieDetailHeader(movieDetail)
@@ -81,6 +82,11 @@ fun MovieDetailPoster(
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.body2,
                     modifier = Modifier.fillMaxSize()
+                )
+            },
+            component = rememberImageComponent {
+                +CircularRevealPlugin(
+                    duration = 450
                 )
             }
         )
@@ -200,7 +206,7 @@ fun MovieDetailGenre(
         style = MaterialTheme.typography.h3,
         modifier = Modifier.padding(horizontal = 16.dp)
     )
-    
+
     Spacer(modifier = Modifier.height(8.dp))
 
     FlowRow(

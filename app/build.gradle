@@ -96,11 +96,12 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
 
-    // Glide
-    implementation "com.github.skydoves:landscapist-glide:1.4.7"
-
+    // KenBurnsView
     implementation "com.flaviofaria:kenburnsview:1.0.7"
+
+    // Accompanist
     implementation "com.google.accompanist:accompanist-pager:0.12.0"
 
+    // Coil
     implementation "io.coil-kt:coil:2.2.1"
 }

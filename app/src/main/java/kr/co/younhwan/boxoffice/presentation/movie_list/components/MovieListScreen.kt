@@ -108,7 +108,7 @@ fun MovieListScreen(
                 ) {
                     Card {
                         val movie = state.movies[pageIndex]
-                        
+
                         Box {
                             val customView = KenBurnsView(LocalContext.current).also { imageView ->
                                 imageView.scaleType = ImageView.ScaleType.CENTER_CROP

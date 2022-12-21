@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import androidx.compose.ui.viewinterop.AndroidView
 import coil.load
@@ -73,20 +74,16 @@ fun MovieListItem(
                 // Rank
                 Text(
                     text = movie.rank,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.h1,
+                    style = MaterialTheme.typography.h3,
+                    fontSize = 48.sp,
                     modifier = Modifier
-                        .align(Alignment.TopStart)
                         .padding(16.dp),
                 )
 
                 // Title
                 Text(
                     text = movie.title,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.h5,
+                    style = MaterialTheme.typography.h1,
                     modifier = Modifier
                         .align(Alignment.BottomStart)
                         .padding(16.dp)

@@ -52,9 +52,9 @@ fun MovieListScreen(
 //        }
 //    }
 
-    if (state.isLoading) {
+    if (!state.isLoading) {
+        val movies = state.movies
 
-    } else {
         Column {
             Text(
                 text = "Discover",
@@ -75,14 +75,14 @@ fun MovieListScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(vertical = 40.dp),
-                count = state.movies.size,
+                count = movies.size,
                 contentPadding = PaddingValues(horizontal = 32.dp),
                 userScrollEnabled = true
-            ) { pageIndex ->
-                
+            ) { index ->
+
                 MovieListItem(
-                    movie = state.movies[pageIndex],
-                    pageOffset = calculateCurrentOffsetForPage(pageIndex).absoluteValue,
+                    movie = movies[index],
+                    pageOffset = calculateCurrentOffsetForPage(index).absoluteValue,
                     onItemClick = {}
                 )
             }

@@ -126,7 +126,6 @@ fun MovieDetailHeader(
             Text(
                 text = movieDetail.title,
                 style = MaterialTheme.typography.h3,
-                color = Color.White,
                 textAlign = TextAlign.Start,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
@@ -173,7 +172,6 @@ fun MovieDetailHeader(
             Text(
                 text = movieDetail.imDbRating,
                 style = MaterialTheme.typography.body2,
-                color = Color.White,
                 textAlign = TextAlign.Start,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
@@ -190,7 +188,6 @@ fun MovieDetailPlot(
     Text(
         text = movieDetail.plot,
         style = MaterialTheme.typography.body2,
-        color = Color.White,
         textAlign = TextAlign.Start,
         modifier = Modifier.padding(horizontal = 16.dp)
     )
@@ -202,7 +199,6 @@ fun MovieDetailGenre(
 ) {
     Text(
         text = "genre",
-        color = Color.White,
         style = MaterialTheme.typography.h3,
         modifier = Modifier.padding(horizontal = 16.dp)
     )
@@ -243,14 +239,12 @@ fun MovieDetailMember(
         Text(
             text = "Director",
             style = MaterialTheme.typography.h4,
-            color = Color.White,
             fontSize = 14.sp
         )
 
         Text(
             text = movieDetail.directors,
             textAlign = TextAlign.End,
-            color = Color.White,
             style = MaterialTheme.typography.body2,
             fontSize = 12.sp,
             maxLines = 1,
@@ -275,14 +269,12 @@ fun MovieDetailMember(
         Text(
             text = "Writer",
             style = MaterialTheme.typography.h4,
-            color = Color.White,
             fontSize = 14.sp
         )
 
         Text(
             text = movieDetail.writers,
             textAlign = TextAlign.End,
-            color = Color.White,
             style = MaterialTheme.typography.body2,
             fontSize = 12.sp,
             maxLines = 1,
@@ -307,14 +299,12 @@ fun MovieDetailMember(
         Text(
             text = "Stars",
             style = MaterialTheme.typography.h4,
-            color = Color.White,
             fontSize = 14.sp
         )
 
         Text(
             text = movieDetail.stars,
             textAlign = TextAlign.End,
-            color = Color.White,
             style = MaterialTheme.typography.body2,
             fontSize = 12.sp,
             maxLines = 1,

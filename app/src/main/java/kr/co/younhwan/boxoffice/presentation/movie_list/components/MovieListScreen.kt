@@ -22,21 +22,20 @@ fun MovieListScreen(
 ) {
     val state = viewModel.state.value
 
-    val pagerState = rememberPagerState()
-
     if (!state.isLoading) {
         val movies = state.movies
+        val pagerState = rememberPagerState()
 
         Column {
             Text(
                 text = "Top",
-                style = MaterialTheme.typography.h2,
+                style = MaterialTheme.typography.h1,
                 modifier = Modifier.padding(start = 16.dp, top = 40.dp),
                 fontWeight = FontWeight.Black
             )
             Text(
                 text = "Box Office",
-                style = MaterialTheme.typography.h3,
+                style = MaterialTheme.typography.h2,
                 modifier = Modifier.padding(start = 16.dp),
                 color = MaterialTheme.colors.primary,
                 fontWeight = FontWeight.Black
@@ -46,7 +45,7 @@ fun MovieListScreen(
                 state = pagerState,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(vertical = 40.dp),
+                    .padding(vertical = 60.dp),
                 count = movies.size,
                 contentPadding = PaddingValues(horizontal = 32.dp),
                 userScrollEnabled = true

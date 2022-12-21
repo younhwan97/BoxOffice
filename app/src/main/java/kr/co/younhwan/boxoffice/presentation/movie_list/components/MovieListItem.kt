@@ -2,10 +2,7 @@ package kr.co.younhwan.boxoffice.presentation.movie_list.components
 
 import android.widget.ImageView
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -45,6 +42,12 @@ fun MovieListItem(
                     scaleX = scale
                     scaleY = scale
                 }
+
+                alpha = lerp(
+                    start = 0.5f,
+                    stop = 1f,
+                    fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                )
             },
         shape = RoundedCornerShape(10.dp),
         backgroundColor = Color.Transparent

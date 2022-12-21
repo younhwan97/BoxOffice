@@ -10,6 +10,6 @@ interface BoxOfficeApi {
     @GET("BoxOffice/{apiKey}")
     suspend fun getBoxOffice(@Path("apiKey") apiKey: String): GetBoxOfficeResult
 
-    @GET("Title/{apiKey}/{movieId}")
+    @GET("Title/{apiKey}/{movieId}/Trailer")
     suspend fun getBoxOfficeDetail(@Path("apiKey") apiKey: String, @Path("movieId") movieId: String) : MovieDetailDto
 }

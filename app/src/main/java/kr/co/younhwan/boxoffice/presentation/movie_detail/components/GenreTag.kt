@@ -16,13 +16,13 @@ fun GenreTag(
     Chip(
         onClick = {},
         colors = ChipDefaults.chipColors(Color.Transparent),
-        border = BorderStroke(width = 1.dp, color = Color.DarkGray)
+        border = BorderStroke(width = 1.dp, color = MaterialTheme.colors.primary)
     ) {
         Text(
             text = tag,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            color = Color.White,
+            color = MaterialTheme.colors.primary,
             style = MaterialTheme.typography.body2
         )
     }

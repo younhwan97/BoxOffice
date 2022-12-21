@@ -29,14 +29,14 @@ fun MovieListScreen(
 
         Column {
             Text(
-                text = "Discover",
-                style = MaterialTheme.typography.h3,
+                text = "Top",
+                style = MaterialTheme.typography.h2,
                 modifier = Modifier.padding(start = 16.dp, top = 40.dp),
                 fontWeight = FontWeight.Black
             )
             Text(
-                text = "Places",
-                style = MaterialTheme.typography.h4,
+                text = "Box Office",
+                style = MaterialTheme.typography.h3,
                 modifier = Modifier.padding(start = 16.dp),
                 color = MaterialTheme.colors.primary,
                 fontWeight = FontWeight.Black

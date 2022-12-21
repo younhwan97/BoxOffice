@@ -65,20 +65,27 @@ fun MovieListItem(
                         .background(Color(android.graphics.Color.parseColor("#80000000")))
                 ) {}
 
-                // Text
-                Column(
-                    Modifier
+                // Rank
+                Text(
+                    text = movie.rank,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.h1,
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(16.dp),
+                )
+
+                // Title
+                Text(
+                    text = movie.title,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.h5,
+                    modifier = Modifier
                         .align(Alignment.BottomStart)
                         .padding(16.dp)
-                ) {
-
-                    Text(
-                        text = movie.title,
-                        style = MaterialTheme.typography.h5,
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
+                )
             }
         }
     }

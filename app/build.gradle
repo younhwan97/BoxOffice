@@ -100,7 +100,7 @@ dependencies {
     implementation "com.flaviofaria:kenburnsview:1.0.7"
 
     // Accompanist
-    implementation "com.google.accompanist:accompanist-pager:0.12.0"
+    implementation "com.google.accompanist:accompanist-pager:0.28.0"
 
     // Coil
     implementation "io.coil-kt:coil:2.2.1"

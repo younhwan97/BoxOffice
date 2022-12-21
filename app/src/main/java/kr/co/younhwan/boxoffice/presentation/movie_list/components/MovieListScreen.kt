@@ -38,10 +38,7 @@ fun MovieListScreen(
 ) {
     val state = viewModel.state.value
 
-    val pagerState = rememberPagerState(
-        pageCount = state.movies.size,
-        initialOffscreenLimit = 2,
-    )
+    val pagerState = rememberPagerState()
 
     // Auto Scroll
     LaunchedEffect(Unit) {
@@ -80,12 +77,13 @@ fun MovieListScreen(
                     .padding(
                         top = 40.dp,
                         bottom = 40.dp
-                    )
+                    ),
+                count = state.movies.size,
+                contentPadding = PaddingValues(horizontal = 32.dp),
             ) { pageIndex ->
                 Card(
                     modifier = Modifier
-                        .fillMaxHeight()
-                        .width(290.dp)
+                        .fillMaxSize()
                         .graphicsLayer {
                             // Image Scale
                             val pageOffset = calculateCurrentOffsetForPage(pageIndex).absoluteValue

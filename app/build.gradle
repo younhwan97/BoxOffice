@@ -104,4 +104,8 @@ dependencies {
 
     // Coil
     implementation "io.coil-kt:coil:2.2.1"
+
+    // Landscapist
+    implementation "com.github.skydoves:landscapist-coil:2.1.0"
+    implementation "com.github.skydoves:landscapist-animation:2.1.0"
 }

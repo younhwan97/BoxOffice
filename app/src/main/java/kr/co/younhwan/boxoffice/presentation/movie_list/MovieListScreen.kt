@@ -1,4 +1,4 @@
-package kr.co.younhwan.boxoffice.presentation.movie_list.components
+package kr.co.younhwan.boxoffice.presentation.movie_list
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -14,7 +14,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.calculateCurrentOffsetForPage
 import com.google.accompanist.pager.rememberPagerState
 import kr.co.younhwan.boxoffice.presentation.Screen
-import kr.co.younhwan.boxoffice.presentation.movie_list.MovieListViewModel
+import kr.co.younhwan.boxoffice.presentation.movie_list.components.MovieListItem
 import kotlin.math.absoluteValue
 
 @OptIn(ExperimentalPagerApi::class)
@@ -57,7 +57,7 @@ fun MovieListScreen(
                 MovieListItem(
                     movie = movies[index],
                     pageOffset = calculateCurrentOffsetForPage(index).absoluteValue,
-                    onItemClick = { navController.navigate(Screen.MovieDetailScreen.route + "/${movies[index].id}")}
+                    onItemClick = { navController.navigate(Screen.MovieDetailScreen.route + "/${movies[index].id}") }
                 )
             }
         }

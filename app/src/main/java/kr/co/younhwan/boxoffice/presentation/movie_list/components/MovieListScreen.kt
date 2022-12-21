@@ -79,60 +79,12 @@ fun MovieListScreen(
                 contentPadding = PaddingValues(horizontal = 32.dp),
                 userScrollEnabled = true
             ) { pageIndex ->
-                Card(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .graphicsLayer {
-                            // Image Scale
-                            val pageOffset = calculateCurrentOffsetForPage(pageIndex).absoluteValue
-
-                            lerp(
-                                start = 0.85f,
-                                stop = 1f,
-                                fraction = 1f - pageOffset.coerceIn(0f, 1f)
-                            ).also { scale ->
-                                scaleX = scale
-                                scaleY = scale
-                            }
-                        },
-                    shape = RoundedCornerShape(10.dp),
-                    backgroundColor = Color.Transparent
-                ) {
-                    Card {
-                        val movie = state.movies[pageIndex]
-
-                        Box {
-                            val customView = KenBurnsView(LocalContext.current).also { imageView ->
-                                imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-                                imageView.load(movie.image)
-                            }
-                            AndroidView(
-                                factory = { customView },
-                                modifier = Modifier.fillMaxSize()
-                            )
-                            Box(
-                                Modifier
-                                    .fillMaxSize()
-                                    .background(Color(android.graphics.Color.parseColor("#80000000")))
-                            ) {}
-
-                            // Text
-                            Column(
-                                Modifier
-                                    .align(Alignment.BottomStart)
-                                    .padding(16.dp)
-                            ) {
-
-                                Text(
-                                    text = movie.title,
-                                    style = MaterialTheme.typography.h5,
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold
-                                )
-                            }
-                        }
-                    }
-                }
+                
+                MovieListItem(
+                    movie = state.movies[pageIndex],
+                    pageOffset = calculateCurrentOffsetForPage(pageIndex).absoluteValue,
+                    onItemClick = {}
+                )
             }
         }
     }

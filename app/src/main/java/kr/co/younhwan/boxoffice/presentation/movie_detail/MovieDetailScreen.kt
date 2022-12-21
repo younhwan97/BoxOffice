@@ -1,13 +1,8 @@
 package kr.co.younhwan.boxoffice.presentation.movie_detail
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
@@ -43,25 +38,21 @@ fun MovieDetailScreen(
 
             MovieDetailPoster(movieDetail)
 
-            Spacer(modifier = Modifier.height(8.dp))
-
             MovieDetailHeader(movieDetail)
 
             Spacer(modifier = Modifier.height(16.dp))
 
             MovieDetailPlot(movieDetail)
 
+            Spacer(modifier = Modifier.height(32.dp))
+
+            MovieDetailMember(movieDetail)
+
             Spacer(modifier = Modifier.height(16.dp))
 
             MovieDetailGenre(movieDetail)
 
             Spacer(modifier = Modifier.height(16.dp))
-
-            MovieDetailMember(movieDetail)
-
-            Spacer(modifier = Modifier.height(16.dp))
-            
-            MovieDetailTrailer(movieDetail)
         }
     }
 }
@@ -209,6 +200,8 @@ fun MovieDetailGenre(
         style = MaterialTheme.typography.h3,
         modifier = Modifier.padding(horizontal = 16.dp)
     )
+    
+    Spacer(modifier = Modifier.height(8.dp))
 
     FlowRow(
         mainAxisSpacing = 10.dp,
@@ -326,19 +319,7 @@ fun MovieDetailMember(
     Divider(
         color = Color.Gray,
         modifier = Modifier
-            .padding(16.dp)
+            .padding(start = 16.dp, end = 16.dp, top = 16.dp)
             .height(1.dp)
-    )
-}
-
-@Composable
-fun MovieDetailTrailer(
-    movieDetail: MovieDetail
-) {
-    Text(
-        text = "Trailer",
-        color = Color.White,
-        style = MaterialTheme.typography.h3,
-        modifier = Modifier.padding(horizontal = 16.dp)
     )
 }

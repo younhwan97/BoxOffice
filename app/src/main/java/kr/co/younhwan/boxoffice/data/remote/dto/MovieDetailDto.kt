@@ -74,6 +74,5 @@ fun MovieDetailDto.toMovieDetail(): MovieDetail {
         imDbRatingVotes,
         boxOffice,
         keywordList,
-        trailer
     )
 }

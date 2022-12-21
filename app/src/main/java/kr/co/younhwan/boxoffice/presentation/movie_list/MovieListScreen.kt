@@ -1,5 +1,6 @@
 package kr.co.younhwan.boxoffice.presentation.movie_list
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -48,6 +49,8 @@ fun MovieListScreen(
         if (!state.isLoading) {
             val movies = state.movies
             val pagerState = rememberPagerState()
+
+            Log.d("temp", movies.toString())
 
             HorizontalPager(
                 state = pagerState,

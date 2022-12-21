@@ -23,7 +23,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BoxOfficeTheme {
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+                Surface(color = MaterialTheme.colors.background) {
+
                     val navController = rememberNavController()
 
                     NavHost(

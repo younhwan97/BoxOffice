@@ -41,16 +41,16 @@ fun MovieListScreen(
     val pagerState = rememberPagerState()
 
     // Auto Scroll
-    LaunchedEffect(Unit) {
-        while (true) {
-            yield()
-            delay(10000)
-            pagerState.animateScrollToPage(
-                page = (pagerState.currentPage + 1) % (pagerState.pageCount),
-                animationSpec = tween(600)
-            )
-        }
-    }
+//    LaunchedEffect(Unit) {
+//        while (true) {
+//            yield()
+//            delay(10000)
+//            tween<Float>(600)
+//            pagerState.animateScrollToPage(
+//                page = (pagerState.currentPage + 1) % (pagerState.pageCount)
+//            )
+//        }
+//    }
 
     if (state.isLoading) {
 
@@ -74,12 +74,10 @@ fun MovieListScreen(
                 state = pagerState,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(
-                        top = 40.dp,
-                        bottom = 40.dp
-                    ),
+                    .padding(vertical = 40.dp),
                 count = state.movies.size,
                 contentPadding = PaddingValues(horizontal = 32.dp),
+                userScrollEnabled = true
             ) { pageIndex ->
                 Card(
                     modifier = Modifier
@@ -96,11 +94,7 @@ fun MovieListScreen(
                                 scaleX = scale
                                 scaleY = scale
                             }
-                        }
-                        .padding(
-                            start = 2.dp,
-                            end = 2.dp,
-                        ),
+                        },
                     shape = RoundedCornerShape(10.dp),
                     backgroundColor = Color.Transparent
                 ) {

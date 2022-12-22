@@ -56,7 +56,7 @@ fun MovieListScreen(
             HorizontalPager(
                 state = pagerState,
                 count = movies.size,
-                contentPadding = PaddingValues(horizontal = 32.dp),
+                contentPadding = PaddingValues(horizontal = 40.dp),
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(vertical = 48.dp),

@@ -32,7 +32,7 @@ data class MovieDetailDto(
     val plot: String,
     val plotLocal: String,
     val plotLocalIsRtl: Boolean,
-    val posters: Any,
+    val posters: PosterResult,
     val ratings: Any,
     val releaseDate: String,
     val runtimeMins: String,
@@ -42,7 +42,7 @@ data class MovieDetailDto(
     val stars: String,
     val tagline: Any,
     val title: String,
-    val trailer: Any,
+    val trailer: Trailer,
     val tvEpisodeInfo: Any,
     val tvSeriesInfo: Any,
     val type: String,
@@ -68,5 +68,7 @@ fun MovieDetailDto.toMovieDetail(): MovieDetail {
         imDbRating,
         boxOffice,
         keywordList,
+        trailer,
+        posters.posters
     )
 }

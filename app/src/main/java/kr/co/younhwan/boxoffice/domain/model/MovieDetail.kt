@@ -17,4 +17,6 @@ data class MovieDetail(
     val imDbRating: String,
     val boxOffice: BoxOffice,
     val keywordList: List<String>,
+    val trailer: Trailer?,
+    val posters: List<Poster>
 )

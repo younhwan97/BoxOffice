@@ -1,5 +1,6 @@
 package kr.co.younhwan.boxoffice.presentation.movie_detail
 
+import android.util.Log
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -30,7 +31,7 @@ fun MovieDetailScreen(
     viewModel: MovieDetailViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
-
+    
     Column(
         modifier = Modifier
             .fillMaxSize()

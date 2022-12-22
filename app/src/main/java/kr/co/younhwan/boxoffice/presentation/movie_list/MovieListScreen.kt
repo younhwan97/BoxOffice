@@ -50,8 +50,6 @@ fun MovieListScreen(
             val movies = state.movies
             val pagerState = rememberPagerState()
 
-            Log.d("temp", movies.toString())
-
             HorizontalPager(
                 state = pagerState,
                 modifier = Modifier

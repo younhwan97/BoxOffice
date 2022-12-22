@@ -66,6 +66,8 @@ fun MovieDetailScreen(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 MovieDetailPosters(movieDetail)
+
+                Spacer(modifier = Modifier.height(32.dp))
             }
         }
     }

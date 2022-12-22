@@ -335,7 +335,6 @@ fun MovieDetailMember(
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MovieDetailPosters(
     movieDetail: MovieDetail
@@ -363,9 +362,12 @@ fun MovieDetailPosters(
                 }
 
                 Card(
-                    modifier = Modifier.size(150.dp),
                     shape = RoundedCornerShape(10.dp),
-                    onClick = { posterState.value = !posterState.value }
+                    modifier = Modifier
+                        .size(150.dp)
+                        .clickable {
+                            posterState.value = !posterState.value
+                        }
                 ) {
                     CoilImage(
                         imageModel = { posters[index].link },

@@ -32,6 +32,8 @@ fun MovieListItem(
     onItemClick: (Movie) -> Unit
 ) {
     Card(
+        shape = RoundedCornerShape(10.dp),
+        backgroundColor = Color.Transparent,
         modifier = Modifier
             .clickable { onItemClick(movie) }
             .fillMaxSize()
@@ -51,9 +53,7 @@ fun MovieListItem(
                     stop = 1f,
                     fraction = 1f - pageOffset.coerceIn(0f, 1f)
                 )
-            },
-        shape = RoundedCornerShape(10.dp),
-        backgroundColor = Color.Transparent
+            }
     ) {
         Card {
             Box {

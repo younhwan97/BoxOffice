@@ -10,10 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -27,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.airbnb.lottie.compose.*
 import com.google.accompanist.flowlayout.FlowRow
 import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.animation.circular.CircularRevealPlugin
@@ -34,6 +32,7 @@ import com.skydoves.landscapist.animation.crossfade.CrossfadePlugin
 import com.skydoves.landscapist.coil.CoilImage
 import com.skydoves.landscapist.components.rememberImageComponent
 import com.skydoves.landscapist.placeholder.shimmer.ShimmerPlugin
+import kr.co.younhwan.boxoffice.R
 import kr.co.younhwan.boxoffice.data.remote.dto.Poster
 import kr.co.younhwan.boxoffice.domain.model.MovieDetail
 import kr.co.younhwan.boxoffice.presentation.movie_detail.components.GenreTag
@@ -44,32 +43,58 @@ fun MovieDetailScreen(
 ) {
     val state = viewModel.state.value
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-    ) {
-        state.movie?.let { movieDetail ->
+    if(!state.isLoading){
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+        ) {
+            state.movie?.let { movieDetail ->
 
-            MovieDetailPoster(movieDetail)
+                MovieDetailPoster(movieDetail)
 
-            MovieDetailHeader(movieDetail)
+                MovieDetailHeader(movieDetail)
 
-            Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
-            MovieDetailPlot(movieDetail)
+                MovieDetailPlot(movieDetail)
 
-            Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(32.dp))
 
-            MovieDetailMember(movieDetail)
+                MovieDetailMember(movieDetail)
 
-            Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
-            MovieDetailGenre(movieDetail)
+                MovieDetailGenre(movieDetail)
 
-            Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
-            MovieDetailPosters(movieDetail)
+                MovieDetailPosters(movieDetail)
+            }
+        }
+    } else {
+        val composition by rememberLottieComposition(
+            LottieCompositionSpec.RawRes(R.raw.movie_loading)
+        )
+        val lottieAnimatable = rememberLottieAnimatable()
+
+        LaunchedEffect(composition) {
+            lottieAnimatable.animate(
+                composition = composition,
+                clipSpec = LottieClipSpec.Frame(0, 1200),
+                initialProgress = 0f
+            )
+        }
+
+        Box(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            LottieAnimation(
+                composition = composition,
+                progress = lottieAnimatable.progress,
+                contentScale = ContentScale.FillHeight,
+                modifier = Modifier.align(Alignment.Center)
+            )
         }
     }
 }

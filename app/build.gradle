@@ -112,4 +112,7 @@ dependencies {
 
     // Lottie
     implementation "com.airbnb.android:lottie-compose:5.2.0"
+
+    // Orbital
+    implementation "com.github.skydoves:orbital:0.2.3"
 }

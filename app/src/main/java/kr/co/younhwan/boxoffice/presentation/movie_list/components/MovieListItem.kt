@@ -14,16 +14,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import androidx.compose.ui.viewinterop.AndroidView
 import coil.load
 import com.flaviofaria.kenburnsview.KenBurnsView
-import com.google.accompanist.pager.calculateCurrentOffsetForPage
 import kr.co.younhwan.boxoffice.domain.model.Movie
-import kotlin.math.absoluteValue
 
 @Composable
 fun MovieListItem(
@@ -83,7 +80,7 @@ fun MovieListItem(
                 // Title
                 Text(
                     text = movie.title,
-                    style = MaterialTheme.typography.h1,
+                    style = MaterialTheme.typography.h2,
                     modifier = Modifier
                         .align(Alignment.BottomStart)
                         .padding(16.dp)

@@ -10,9 +10,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kr.co.younhwan.boxoffice.common.Constants
 import kr.co.younhwan.boxoffice.common.Resource
-import kr.co.younhwan.boxoffice.domain.model.MovieDetail
 import kr.co.younhwan.boxoffice.domain.use_case.get_movie.GetMovieUseCase
-import kr.co.younhwan.boxoffice.presentation.movie_list.MovieListState
 import javax.inject.Inject
 
 @HiltViewModel

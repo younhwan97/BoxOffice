@@ -1,6 +1,5 @@
 package kr.co.younhwan.boxoffice.presentation.movie_detail
 
-import kr.co.younhwan.boxoffice.domain.model.Movie
 import kr.co.younhwan.boxoffice.domain.model.MovieDetail
 
 data class MovieDetailState(

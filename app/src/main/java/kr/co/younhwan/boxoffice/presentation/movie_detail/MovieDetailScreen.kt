@@ -19,7 +19,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.airbnb.lottie.compose.*
 import com.google.accompanist.flowlayout.FlowRow
 import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.animation.crossfade.CrossfadePlugin
@@ -30,6 +29,7 @@ import kr.co.younhwan.boxoffice.domain.model.MovieDetail
 import kr.co.younhwan.boxoffice.presentation.support.LoadingScreen
 import kr.co.younhwan.boxoffice.presentation.movie_detail.components.GenreTag
 import kr.co.younhwan.boxoffice.presentation.movie_detail.components.PosterModal
+import kr.co.younhwan.boxoffice.presentation.support.ErrorScreen
 
 @Composable
 fun MovieDetailScreen(
@@ -38,38 +38,34 @@ fun MovieDetailScreen(
     val state = viewModel.state.value
 
     if (state.isLoading) {
+        // Loading
         LoadingScreen()
-    } else {
+    } else if (state.movie != null) {
+        // Success
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-            state.movie?.let { movieDetail ->
+            state.movie.let { movieDetail ->
 
                 MovieDetailPoster(movieDetail)
-
                 MovieDetailHeader(movieDetail)
-
                 Spacer(modifier = Modifier.height(16.dp))
-
                 MovieDetailPlot(movieDetail)
-
                 Spacer(modifier = Modifier.height(32.dp))
-
                 MovieDetailMember(movieDetail)
-
                 Spacer(modifier = Modifier.height(16.dp))
-
                 MovieDetailGenre(movieDetail)
-
                 Spacer(modifier = Modifier.height(16.dp))
-
                 MovieDetailPosters(movieDetail)
-
                 Spacer(modifier = Modifier.height(32.dp))
+
             }
         }
+    } else {
+        // Error
+        ErrorScreen()
     }
 }
 
@@ -131,11 +127,11 @@ fun MovieDetailHeader(
     movieDetail: MovieDetail
 ) {
     Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+            .padding(horizontal = 16.dp)
     ) {
         Column() {
             Text(
@@ -198,7 +194,7 @@ fun MovieDetailHeader(
 
 @Composable
 fun MovieDetailPlot(
-    movieDetail: MovieDetail
+    movieDetail: MovieDetail,
 ) {
     Text(
         text = movieDetail.plot,
@@ -206,31 +202,6 @@ fun MovieDetailPlot(
         textAlign = TextAlign.Start,
         modifier = Modifier.padding(horizontal = 16.dp)
     )
-}
-
-@Composable
-fun MovieDetailGenre(
-    movieDetail: MovieDetail
-) {
-    Text(
-        text = "genre",
-        style = MaterialTheme.typography.h3,
-        modifier = Modifier.padding(horizontal = 16.dp)
-    )
-
-    Spacer(modifier = Modifier.height(16.dp))
-
-    FlowRow(
-        mainAxisSpacing = 10.dp,
-        crossAxisSpacing = 10.dp,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-    ) {
-        movieDetail.genreList.forEach { genre ->
-            GenreTag(tag = genre.value)
-        }
-    }
 }
 
 @Composable
@@ -336,10 +307,36 @@ fun MovieDetailMember(
 }
 
 @Composable
+fun MovieDetailGenre(
+    movieDetail: MovieDetail
+) {
+    Text(
+        text = "genre",
+        style = MaterialTheme.typography.h3,
+        modifier = Modifier.padding(horizontal = 16.dp)
+    )
+
+    Spacer(modifier = Modifier.height(16.dp))
+
+    FlowRow(
+        mainAxisSpacing = 10.dp,
+        crossAxisSpacing = 10.dp,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+    ) {
+        movieDetail.genreList.forEach { genre ->
+            GenreTag(tag = genre.value)
+        }
+    }
+}
+
+@Composable
 fun MovieDetailPosters(
     movieDetail: MovieDetail
 ) {
     if (movieDetail.posters.isNotEmpty()) {
+        // 최대 10개 까지
         val posters = if (movieDetail.posters.size >= 10) movieDetail.posters.subList(0, 10) else movieDetail.posters
 
         Text(

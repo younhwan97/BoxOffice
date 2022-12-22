@@ -5,7 +5,6 @@ import kr.co.younhwan.boxoffice.data.remote.dto.*
 data class MovieDetail(
     val id: String,
     val title: String,
-    val year: String,
     val releaseDate: String,
     val image: String,
     val runtimeStr: String,
@@ -16,7 +15,5 @@ data class MovieDetail(
     val genreList: List<Genre>,
     val imDbRating: String,
     val boxOffice: BoxOffice,
-    val keywordList: List<String>,
-    val trailer: Trailer?,
     val posters: List<Poster>
 )

@@ -27,7 +27,7 @@ import com.skydoves.landscapist.coil.CoilImage
 import com.skydoves.landscapist.components.rememberImageComponent
 import com.skydoves.landscapist.placeholder.shimmer.ShimmerPlugin
 import kr.co.younhwan.boxoffice.domain.model.MovieDetail
-import kr.co.younhwan.boxoffice.presentation.loading.LoadingScreen
+import kr.co.younhwan.boxoffice.presentation.support.LoadingScreen
 import kr.co.younhwan.boxoffice.presentation.movie_detail.components.GenreTag
 import kr.co.younhwan.boxoffice.presentation.movie_detail.components.PosterModal
 

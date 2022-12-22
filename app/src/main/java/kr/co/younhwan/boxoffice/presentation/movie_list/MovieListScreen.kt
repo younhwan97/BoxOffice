@@ -15,8 +15,9 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.calculateCurrentOffsetForPage
 import com.google.accompanist.pager.rememberPagerState
 import kr.co.younhwan.boxoffice.presentation.Screen
-import kr.co.younhwan.boxoffice.presentation.loading.LoadingScreen
+import kr.co.younhwan.boxoffice.presentation.support.LoadingScreen
 import kr.co.younhwan.boxoffice.presentation.movie_list.components.MovieListItem
+import kr.co.younhwan.boxoffice.presentation.support.ErrorScreen
 import kotlin.math.absoluteValue
 
 @OptIn(ExperimentalPagerApi::class)
@@ -28,6 +29,7 @@ fun MovieListScreen(
     val state = viewModel.state.value
 
     Column {
+        // Header
         Text(
             text = "Top",
             style = MaterialTheme.typography.h1,
@@ -36,34 +38,40 @@ fun MovieListScreen(
         )
         Text(
             text = "Box Office",
-            style = MaterialTheme.typography.h2,
+            style = MaterialTheme.typography.h1,
             modifier = Modifier.padding(start = 16.dp),
             color = MaterialTheme.colors.primary,
             fontWeight = FontWeight.Black
         )
 
+        // Content
         if (state.isLoading) {
+            // Lading
             LoadingScreen()
-        } else {
+        } else if (state.movies.isNotEmpty()) {
+            // Success
             val movies = state.movies
             val pagerState = rememberPagerState()
 
             HorizontalPager(
                 state = pagerState,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(vertical = 60.dp),
                 count = movies.size,
                 contentPadding = PaddingValues(horizontal = 32.dp),
-                userScrollEnabled = true
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(vertical = 48.dp),
             ) { index ->
-
                 MovieListItem(
                     movie = movies[index],
                     pageOffset = calculateCurrentOffsetForPage(index).absoluteValue,
-                    onItemClick = { navController.navigate(Screen.MovieDetailScreen.route + "/${movies[index].id}") }
+                    onItemClick = {
+                        navController.navigate(Screen.MovieDetailScreen.route + "/${movies[index].id}")
+                    }
                 )
             }
+        } else {
+            // Error
+            ErrorScreen()
         }
     }
 }

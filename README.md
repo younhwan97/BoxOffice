@@ -2,7 +2,7 @@
 
 <p align="center">  
 A box office movie app using Jetpack Compose and Hilt based on modern Android tech stacks. <br> 
-Provides weekly box office rankings using IMDB's box office API.
+It also provides weekly box office rankings using IMDB's box office API.
 </p>
 
 <br/>
@@ -14,6 +14,7 @@ Provides weekly box office rankings using IMDB's box office API.
 </p>
 
 <p align="center">
+  <img src="preview/img0.gif" width="270"/>
   <img src="preview/img1.gif" width="270"/>
   <img src="preview/img2.gif" width="270"/>
 </p>

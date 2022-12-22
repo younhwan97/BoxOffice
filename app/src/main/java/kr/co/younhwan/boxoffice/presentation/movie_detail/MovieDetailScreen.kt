@@ -35,6 +35,7 @@ import com.skydoves.landscapist.placeholder.shimmer.ShimmerPlugin
 import kr.co.younhwan.boxoffice.R
 import kr.co.younhwan.boxoffice.data.remote.dto.Poster
 import kr.co.younhwan.boxoffice.domain.model.MovieDetail
+import kr.co.younhwan.boxoffice.presentation.loading.LoadingScreen
 import kr.co.younhwan.boxoffice.presentation.movie_detail.components.GenreTag
 
 @Composable
@@ -43,7 +44,9 @@ fun MovieDetailScreen(
 ) {
     val state = viewModel.state.value
 
-    if(!state.isLoading){
+    if (state.isLoading) {
+        LoadingScreen()
+    } else {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -71,30 +74,6 @@ fun MovieDetailScreen(
 
                 MovieDetailPosters(movieDetail)
             }
-        }
-    } else {
-        val composition by rememberLottieComposition(
-            LottieCompositionSpec.RawRes(R.raw.movie_loading)
-        )
-        val lottieAnimatable = rememberLottieAnimatable()
-
-        LaunchedEffect(composition) {
-            lottieAnimatable.animate(
-                composition = composition,
-                clipSpec = LottieClipSpec.Frame(0, 1200),
-                initialProgress = 0f
-            )
-        }
-
-        Box(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            LottieAnimation(
-                composition = composition,
-                progress = lottieAnimatable.progress,
-                contentScale = ContentScale.FillHeight,
-                modifier = Modifier.align(Alignment.Center)
-            )
         }
     }
 }

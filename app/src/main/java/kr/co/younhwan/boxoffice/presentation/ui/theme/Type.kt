@@ -48,8 +48,3 @@ val Typography = Typography(
         fontSize = 14.sp
     )
 )
-
-// custom font
-private val Pretendard = FontFamily(
-    Font(R.font.pretendard_bold, FontWeight.Bold)
-)

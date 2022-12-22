@@ -3,6 +3,8 @@ package kr.co.younhwan.boxoffice.presentation.movie_detail
 import android.util.Log
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
@@ -21,8 +23,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.flowlayout.FlowRow
 import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.animation.circular.CircularRevealPlugin
+import com.skydoves.landscapist.animation.crossfade.CrossfadePlugin
 import com.skydoves.landscapist.coil.CoilImage
 import com.skydoves.landscapist.components.rememberImageComponent
+import com.skydoves.landscapist.placeholder.shimmer.ShimmerPlugin
 import kr.co.younhwan.boxoffice.domain.model.MovieDetail
 import kr.co.younhwan.boxoffice.presentation.movie_detail.components.GenreTag
 
@@ -31,7 +35,7 @@ fun MovieDetailScreen(
     viewModel: MovieDetailViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
-    
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -55,6 +59,8 @@ fun MovieDetailScreen(
             MovieDetailGenre(movieDetail)
 
             Spacer(modifier = Modifier.height(16.dp))
+
+            MovieDetailPosters(movieDetail)
         }
     }
 }
@@ -86,8 +92,8 @@ fun MovieDetailPoster(
                 )
             },
             component = rememberImageComponent {
-                +CircularRevealPlugin(
-                    duration = 450
+                +CrossfadePlugin(
+                    duration = 550
                 )
             }
         )
@@ -319,4 +325,61 @@ fun MovieDetailMember(
             .padding(start = 16.dp, end = 16.dp, top = 16.dp)
             .height(1.dp)
     )
+}
+
+@Composable
+fun MovieDetailPosters(
+    movieDetail: MovieDetail
+) {
+    if (movieDetail.posters.isNotEmpty()) {
+        val posters = if (movieDetail.posters.size >= 10) movieDetail.posters.subList(0, 10) else movieDetail.posters
+
+        Text(
+            text = "Posters",
+            style = MaterialTheme.typography.h3,
+            modifier = Modifier.padding(horizontal = 16.dp)
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+        ) {
+            items(posters.size) { index ->
+                Card(
+                    modifier = Modifier.size(150.dp),
+                    shape = RoundedCornerShape(10.dp)
+                ) {
+                    CoilImage(
+                        imageModel = { posters[index].link },
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        imageOptions = ImageOptions(
+                            contentScale = ContentScale.Crop,
+                            alignment = Alignment.Center,
+                        ),
+                        failure = {
+                            Text(
+                                text = "image request failed.",
+                                textAlign = TextAlign.Center,
+                                style = MaterialTheme.typography.body2,
+                                modifier = Modifier.fillMaxSize()
+                            )
+                        },
+                        component = rememberImageComponent {
+                            +CrossfadePlugin(
+                                duration = 550
+                            )
+                            +ShimmerPlugin(
+                                baseColor = Color(0xFF424242),
+                                highlightColor = Color(0xA3C2C2C2)
+                            )
+                        }
+                    )
+
+                }
+            }
+        }
+    }
 }

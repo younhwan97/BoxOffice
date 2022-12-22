@@ -1,8 +1,5 @@
 package kr.co.younhwan.boxoffice.presentation.movie_detail
 
-import android.util.Log
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.SpringSpec
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -19,24 +16,20 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.airbnb.lottie.compose.*
 import com.google.accompanist.flowlayout.FlowRow
 import com.skydoves.landscapist.ImageOptions
-import com.skydoves.landscapist.animation.circular.CircularRevealPlugin
 import com.skydoves.landscapist.animation.crossfade.CrossfadePlugin
 import com.skydoves.landscapist.coil.CoilImage
 import com.skydoves.landscapist.components.rememberImageComponent
 import com.skydoves.landscapist.placeholder.shimmer.ShimmerPlugin
-import kr.co.younhwan.boxoffice.R
-import kr.co.younhwan.boxoffice.data.remote.dto.Poster
 import kr.co.younhwan.boxoffice.domain.model.MovieDetail
 import kr.co.younhwan.boxoffice.presentation.loading.LoadingScreen
 import kr.co.younhwan.boxoffice.presentation.movie_detail.components.GenreTag
+import kr.co.younhwan.boxoffice.presentation.movie_detail.components.PosterModal
 
 @Composable
 fun MovieDetailScreen(
@@ -361,14 +354,16 @@ fun MovieDetailPosters(
             contentPadding = PaddingValues(horizontal = 16.dp),
         ) {
             items(posters.size) { index ->
-                val imageState = remember { mutableStateOf(false) }
+                val posterState = remember { mutableStateOf(false) }
 
-                ImageModal(poster = posters[index], openDialogCustom = imageState)
+                if (posterState.value) {
+                    PosterModal(poster = posters[index], openPosterModal = posterState)
+                }
 
                 Card(
                     modifier = Modifier.size(150.dp),
                     shape = RoundedCornerShape(10.dp),
-                    onClick = { imageState.value = !imageState.value }
+                    onClick = { posterState.value = !posterState.value }
                 ) {
                     CoilImage(
                         imageModel = { posters[index].link },
@@ -401,63 +396,3 @@ fun MovieDetailPosters(
         }
     }
 }
-
-@Composable
-fun ImageModal(
-    poster: Poster,
-    openDialogCustom: MutableState<Boolean>
-) {
-    if (openDialogCustom.value) {
-        Dialog(
-            onDismissRequest = { openDialogCustom.value = !openDialogCustom.value }
-        ) {
-            ImageModalUI(
-                poster = poster
-            )
-        }
-    }
-}
-
-@Composable
-fun ImageModalUI(
-    poster: Poster,
-    modifier: Modifier = Modifier
-) {
-    Card(
-        elevation = 8.dp,
-        shape = RoundedCornerShape(10.dp),
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-    ) {
-        Box {
-            CoilImage(
-                imageModel = { poster.link },
-                modifier = Modifier
-                    .height(500.dp)
-                    .fillMaxSize(),
-                imageOptions = ImageOptions(
-                    contentScale = ContentScale.Crop,
-                    alignment = Alignment.Center,
-                ),
-                failure = {
-                    Text(
-                        text = "image request failed.",
-                        textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.body2,
-                        modifier = Modifier.fillMaxSize()
-                    )
-                },
-                component = rememberImageComponent {
-                    +CrossfadePlugin(
-                        duration = 550
-                    )
-                    +ShimmerPlugin(
-                        baseColor = Color(0xFF424242),
-                        highlightColor = Color(0xA3C2C2C2)
-                    )
-                }
-            )
-        }
-    }
-}
-
-

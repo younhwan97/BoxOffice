@@ -2,7 +2,7 @@ package kr.co.younhwan.boxoffice.domain.use_case.get_movie
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kr.co.younhwan.boxoffice.common.Constants.API_KEY
+import kr.co.younhwan.boxoffice.BuildConfig
 import kr.co.younhwan.boxoffice.common.Resource
 import kr.co.younhwan.boxoffice.data.remote.dto.toMovieDetail
 import kr.co.younhwan.boxoffice.domain.model.MovieDetail
@@ -18,7 +18,7 @@ class GetMovieUseCase @Inject constructor(
     operator fun invoke(movieId: String): Flow<Resource<MovieDetail>> = flow {
         try {
             emit(Resource.Loading())
-            val movieDetail = repository.getBoxOfficeDetail(API_KEY, movieId).toMovieDetail()
+            val movieDetail = repository.getBoxOfficeDetail(BuildConfig.API_KEY, movieId).toMovieDetail()
             emit(Resource.Success(movieDetail))
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "An expected error!"))

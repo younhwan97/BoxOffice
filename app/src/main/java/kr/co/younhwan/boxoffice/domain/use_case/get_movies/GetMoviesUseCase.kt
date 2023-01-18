@@ -25,6 +25,7 @@ class GetMoviesUseCase @Inject constructor(
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "An expected error!"))
         } catch (e: IOException) {
+            Log.d("check", e.toString())
             emit(Resource.Error("Couldn't reach server"))
         }
     }

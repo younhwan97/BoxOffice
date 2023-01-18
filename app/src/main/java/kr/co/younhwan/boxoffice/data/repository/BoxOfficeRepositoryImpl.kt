@@ -1,5 +1,6 @@
 package kr.co.younhwan.boxoffice.data.repository
 
+import android.util.Log
 import kr.co.younhwan.boxoffice.data.remote.BoxOfficeApi
 import kr.co.younhwan.boxoffice.data.remote.dto.MovieDetailDto
 import kr.co.younhwan.boxoffice.data.remote.dto.MovieDto

@@ -1,5 +1,9 @@
 package kr.co.younhwan.boxoffice.presentation.movie_list.components
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.view.animation.Animation
 import android.widget.ImageView
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,13 +17,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import androidx.compose.ui.viewinterop.AndroidView
+import coil.Coil
 import coil.load
+import coil.request.ImageRequest
 import com.flaviofaria.kenburnsview.KenBurnsView
+import com.skydoves.landscapist.ImageOptions
+import com.skydoves.landscapist.animation.crossfade.CrossfadePlugin
+import com.skydoves.landscapist.coil.CoilImage
+import com.skydoves.landscapist.components.rememberImageComponent
+import kotlinx.coroutines.CoroutineScope
 import kr.co.younhwan.boxoffice.domain.model.Movie
 
 @Composable
@@ -56,7 +69,9 @@ fun MovieListItem(
             Box {
                 val customView = KenBurnsView(LocalContext.current).also { imageView ->
                     imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-                    imageView.load(movie.image)
+                    imageView.load(movie.image) {
+                        size(1000)
+                    }
                 }
                 AndroidView(
                     factory = { customView },

@@ -57,6 +57,8 @@ fun MovieListItem(
                 val customView = KenBurnsView(LocalContext.current).also { imageView ->
                     imageView.scaleType = ImageView.ScaleType.CENTER_CROP
                     imageView.load(movie.image) {
+                        // 사이즈 조절 필요
+                        // 사이즈가 너무 큰 이미지로 앱이 종료되는 현상 발생
                         size(1000)
                     }
                 }

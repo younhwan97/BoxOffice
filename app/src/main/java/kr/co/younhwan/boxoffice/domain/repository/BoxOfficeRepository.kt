@@ -1,6 +1,5 @@
 package kr.co.younhwan.boxoffice.domain.repository
 
-import kr.co.younhwan.boxoffice.data.remote.dto.BoxOffice
 import kr.co.younhwan.boxoffice.data.remote.dto.MovieDetailDto
 import kr.co.younhwan.boxoffice.data.remote.dto.MovieDto
 

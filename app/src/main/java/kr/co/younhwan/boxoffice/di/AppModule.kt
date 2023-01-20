@@ -10,7 +10,6 @@ import kr.co.younhwan.boxoffice.data.repository.BoxOfficeRepositoryImpl
 import kr.co.younhwan.boxoffice.domain.repository.BoxOfficeRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module

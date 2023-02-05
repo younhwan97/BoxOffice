@@ -16,6 +16,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+    // 앱 전체에서 사용할 것이기 때문에 Singleton
     @Provides
     @Singleton
     fun provideBoxOfficeApi(): BoxOfficeApi {

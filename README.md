@@ -8,9 +8,9 @@ It also provides weekly box office rankings using IMDB's box office API.
 ## Screenshots
 
 <p align="center">
-  <img src="preview/img0.gif" width="270"/>
-  <img src="preview/img1.gif" width="270"/>
-  <img src="preview/img2.gif" width="270"/>
+  <img src="preview/image1.gif" width="270"/>
+  <img src="preview/image2.gif" width="270"/>
+  <img src="preview/image3.gif" width="270"/>
 </p>
 
 <br/>

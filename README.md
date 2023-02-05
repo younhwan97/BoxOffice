@@ -13,8 +13,6 @@ It also provides weekly box office rankings using IMDB's box office API.
   <img src="preview/image3.gif" width="270"/>
 </p>
 
-<br/>
-
 ## How to build on your environment
 
 Add your [IMDB](https://imdb-api.com/) API key in local.properties file.
